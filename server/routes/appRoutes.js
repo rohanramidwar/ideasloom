@@ -1,11 +1,18 @@
 import express from "express";
 
-import { getPosts, createPost } from "../controllers/postControllers.js";
+import {
+  getAllPosts,
+  createPost,
+  getPost,
+} from "../controllers/postControllers.js";
+import { addComment } from "../controllers/commentControllers.js";
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getPosts);
+router.get("/", getAllPosts);
+router.get("/:id", getPost);
 router.post("/", auth, createPost); //auth middleware checks if user is logged in
+router.post("/:id/comment", auth, addComment);
 
 export default router;
