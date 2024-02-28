@@ -1,6 +1,6 @@
 import PostModel from "../models/postModel.js";
 
-export const getPosts = async (req, res) => {
+export const getAllPosts = async (req, res) => {
   try {
     const posts = await PostModel.find({});
     res.status(200).json(posts);
@@ -25,5 +25,16 @@ export const createPost = async (req, res) => {
     res.status(201).json(newPost);
   } catch (error) {
     res.status(409).json({ message: error.message });
+  }
+};
+
+export const getPost = async (req, res) => {
+  const { id } = req.params; //post id
+
+  try {
+    const posts = await PostModel.findById(id);
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
