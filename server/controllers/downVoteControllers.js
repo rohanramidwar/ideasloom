@@ -29,7 +29,9 @@ export const downVote = async (req, res) => {
       id,
       { $push: { downVotes: downVote._id } },
       { new: true }
-    );
+    )
+      .populate("downVotes")
+      .exec();
 
     res.status(201).json(updatedPost);
   } catch (error) {

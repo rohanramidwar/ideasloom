@@ -1,7 +1,7 @@
 import PostModel from "../models/postModel.js";
 import UpVoteModel from "../models/upVoteModel.js";
 
-export const upVotePost = async (req, res) => {
+export const upVote = async (req, res) => {
   //user not logged in
   const userId = String(req?.userId);
   if (!userId) return res.json({ message: "Unauthenticated" });
@@ -26,7 +26,9 @@ export const upVotePost = async (req, res) => {
       id,
       { $push: { upVotes: upVote._id } },
       { new: true }
-    );
+    )
+      .populate("upVotes")
+      .exec();
 
     res.status(201).json(updatedPost);
   } catch (error) {
@@ -37,7 +39,7 @@ export const upVotePost = async (req, res) => {
   }
 };
 
-export const removeUpVotePost = async (req, res) => {
+export const removeUpVote = async (req, res) => {
   //user not logged in
   const userId = String(req.userId);
   if (!userId) return res.json({ message: "Unauthenticated" });
