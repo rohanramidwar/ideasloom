@@ -2,9 +2,9 @@ import { FETCHALLPOSTS, CREATEPOST, FETCHPOST } from "../constants/actionTypes";
 import * as api from "../api";
 
 //has action type and payload
-export const getAllPosts = () => async (dispatch) => {
+export const getAllPosts = (page) => async (dispatch) => {
   try {
-    const { data } = await api.fetchAllPosts();
+    const { data } = await api.fetchAllPosts(page);
     dispatch({ type: FETCHALLPOSTS, payload: data }); //sends to reducer
   } catch (err) {
     console.log(err);

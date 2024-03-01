@@ -1,8 +1,16 @@
 import PostModel from "../models/postModel.js";
 
 export const getAllPosts = async (req, res) => {
+  const { page } = req.query;
+
   try {
+    const LIMIT = 8;
+    const stIndex = (Number(page) - 1) * LIMIT; //skips earlier fetched posts
+
     const posts = await PostModel.find({})
+      .sort({ _id: -1 }) //latest post first
+      .limit(LIMIT)
+      .skip(stIndex)
       .populate("upVotes")
       .populate("downVotes")
       .exec();
