@@ -163,18 +163,20 @@ const PostDetails = () => {
             </p>
           </div>
 
-          <div className="mt-2">
-            <div className="flex gap-2">
-              <img
-                src={profilePic}
-                alt="profilePic"
-                className="rounded-full w-5 h-5"
-              />
-              <div>
-                <p className="font-medium text-sm">Rohan</p>
-                <p className="text-sm break-all">Thanks for sharing!</p>
+          <div className="mt-2 flex flex-col gap-2">
+            {post?.comments?.map((comment) => (
+              <div className="flex gap-2">
+                <img
+                  src={profilePic}
+                  alt="profilePic"
+                  className="rounded-full w-5 h-5"
+                />
+                <div>
+                  <p className="font-medium text-sm">{comment?.user}</p>
+                  <p className="text-sm break-all">{comment?.text}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
