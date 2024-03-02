@@ -31,6 +31,7 @@ export const downVote = async (req, res) => {
       { new: true }
     )
       .populate("downVotes")
+      .populate("comments")
       .exec();
 
     res.status(201).json(updatedPost);
@@ -64,7 +65,9 @@ export const removeDownVote = async (req, res) => {
       id,
       { $pull: { downVotes: downVoteExist._id } },
       { new: true }
-    );
+    )
+      .populate("comments")
+      .exec();
 
     res.status(200).json(updatedPost);
   } catch (error) {
