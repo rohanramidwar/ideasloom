@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { CLEARPOSTS } from "../constants/actionTypes";
 
 const Home = () => {
-  const { posts, isLoading } = useSelector((state) => state?.posts);
+  const { posts, noOfPages, isLoading } = useSelector((state) => state?.posts);
 
   const location = useLocation();
 
@@ -28,8 +28,9 @@ const Home = () => {
   const handleInfiniteScroll = async () => {
     try {
       if (
+        page <= noOfPages &&
         window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight
+          document.documentElement.scrollHeight
       ) {
         setPage((prev) => prev + 1);
       }
@@ -42,7 +43,7 @@ const Home = () => {
     window.addEventListener("scroll", handleInfiniteScroll);
     //clear
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
-  }, []);
+  }, [page, noOfPages]);
 
   return (
     <div className="flex flex-col items-center pt-28">
