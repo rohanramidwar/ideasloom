@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getAllPosts } from "../actions/postActions";
 import Post from "../components/Post";
+import { useLocation } from "react-router-dom";
+import { CLEARPOSTS } from "../constants/actionTypes";
 
 const Home = () => {
-  const { posts } = useSelector((state) => state?.posts);
+  const { posts, isLoading } = useSelector((state) => state?.posts);
+
+  const location = useLocation();
 
   const [page, setPage] = useState(1);
 
@@ -16,6 +19,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllPosts(page));
   }, [dispatch, page]);
+
+  useEffect(() => {
+    dispatch({ type: CLEARPOSTS });
+  }, [location]);
 
   //infinitely scroll
   const handleInfiniteScroll = async () => {
@@ -38,18 +45,20 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Link to="/create">
-        <button>Create Post</button>
-      </Link>
-      <Link to="/settings">
-        <button>Settings</button>
-      </Link>
+    <div className="flex flex-col items-center pt-28">
+      <div className="flex w-full pl-2 sm:pl-7 my-4">
+        <h1 className="font-black text-2xl text-slate-50">Your feed</h1>
+      </div>
 
-      <div>
+      <div className="flex flex-col sm:grid grid-cols-3 gap-4">
         {posts.map((post) => (
           <Post key={post?._id} post={post} />
         ))}
+        {isLoading && (
+          <div className="flex justify-center items-center w-full h-20">
+            <p>Loading...</p>
+          </div>
+        )}
       </div>
     </div>
   );
