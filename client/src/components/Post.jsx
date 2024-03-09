@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import moment from "moment";
+import toast from "react-hot-toast";
+import { ArrowBigDown, ArrowBigUp, MessageSquare } from "lucide-react";
+
 import {
   downVote,
   removeDownVote,
   removeUpVote,
   upVote,
 } from "../actions/voteActions";
+
+import profilePic from "../assets/profilePic.gif";
 
 const Post = ({ post }) => {
   //result and token
@@ -37,39 +43,97 @@ const Post = ({ post }) => {
   };
 
   const handleUpVote = () => {
-    dispatch(upVote(post?._id));
-    dispatch(removeDownVote(post?._id));
+    if (!user) {
+      toast.error("Please login first");
+    } else {
+      dispatch(upVote(post?._id));
+      if (isDownVoted) dispatch(removeDownVote(post?._id));
+    }
   };
   const handleRemoveUpVote = () => {
-    dispatch(removeUpVote(post?._id));
+    if (!user) {
+      toast.error("Please sign in first");
+    } else {
+      dispatch(removeUpVote(post?._id));
+    }
   };
   const handleDownVote = () => {
-    dispatch(downVote(post?._id));
-    dispatch(removeUpVote(post?._id));
+    if (!user) {
+      toast.error("Please sign in first");
+    } else {
+      dispatch(downVote(post?._id));
+      if (isUpVoted) dispatch(removeUpVote(post?._id));
+    }
   };
   const handleRemoveDownVote = () => {
-    dispatch(removeDownVote(post?._id));
+    if (!user) {
+      toast.error("Please sign in first");
+    } else {
+      dispatch(removeDownVote(post?._id));
+    }
   };
 
   return (
-    <div>
-      <div onClick={openPost}>
-        <h2>{post?.title}</h2>
-        <p>{post?.content}</p>
+    <div className="mx-1 p-2 text-slate-800 bg-gray-50 w-[389px] rounded-xl shadow-sm ">
+      <div role="button" onClick={openPost}>
+        <p className="text-xs text-end text-slate-500">
+          {moment(post?.createdAt)?.fromNow()}
+        </p>
+        <div className="flex items-center gap-2">
+          <img
+            src={profilePic}
+            alt="profilePic"
+            className="rounded-full w-10 h-10"
+          />
+          <p className="font-medium ">{post?.creator}</p>
+        </div>
+        <p className="text-lg font-medium mt-2">{post?.title}</p>
+        <p className=" mt-2 break-all">{post?.content}</p>
       </div>
-      <span>{upVotes?.length - downVotes?.length}</span>
-      {isUpVoted ? (
-        <button onClick={handleRemoveUpVote}>remove upvote</button>
-      ) : (
-        <button onClick={handleUpVote}>upvote</button>
-      )}
+      <div className="flex gap-6 text-slate-500 text-xs mt-4">
+        <div className="p-1 rounded-md flex gap-2">
+          {isUpVoted ? (
+            <button>
+              {" "}
+              <ArrowBigUp
+                onClick={handleRemoveUpVote}
+                className="text-green-500 fill-green-500"
+                size={18}
+              />
+            </button>
+          ) : (
+            <button>
+              {" "}
+              <ArrowBigUp onClick={handleUpVote} size={18} />
+            </button>
+          )}
+          <p>{post?.upVotes?.length - post?.downVotes?.length}</p>
 
-      {isDownVoted ? (
-        <button onClick={handleRemoveDownVote}>remove downvote</button>
-      ) : (
-        <button onClick={handleDownVote}>downvote</button>
-      )}
-      <p>{post?.creator}</p>
+          {isDownVoted ? (
+            <button>
+              {" "}
+              <ArrowBigDown
+                onClick={handleRemoveDownVote}
+                className="text-red-500 fill-red-500"
+                size={18}
+              />
+            </button>
+          ) : (
+            <button>
+              {" "}
+              <ArrowBigDown onClick={handleDownVote} size={18} />
+            </button>
+          )}
+        </div>
+        <div
+          onClick={openPost}
+          role="button"
+          className="flex gap-2 items-center p-1 rounded-md hover:text-gray-50 hover:bg-sky-600"
+        >
+          <MessageSquare size={14} />
+          <p>{post?.comments?.length}</p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -15,6 +15,7 @@ import {
 const initialState = {
   posts: [],
   isLoading: true,
+  noOfPages: 2,
 };
 
 const posts = (state = initialState, action) => {
@@ -28,10 +29,14 @@ const posts = (state = initialState, action) => {
       return { ...state, isLoading: false };
 
     case FETCHALLPOSTS:
-      return { ...state, posts: [...state.posts, ...payload] };
+      return {
+        ...state,
+        posts: [...state.posts, ...payload?.data],
+        noOfPages: payload?.noOfPages,
+      };
 
     case CLEARPOSTS:
-      return { ...state, posts: [] };
+      return { ...state, posts: [], noOfPages: null };
 
     case CREATEPOST:
       return { ...state, payload };

@@ -6,6 +6,7 @@ export const getAllPosts = async (req, res) => {
   try {
     const LIMIT = 8;
     const stIndex = (Number(page) - 1) * LIMIT; //skips earlier fetched posts
+    const totalPosts = await PostModel.countDocuments({});
 
     const posts = await PostModel.find({})
       .sort({ _id: -1 }) //latest post first
@@ -14,7 +15,10 @@ export const getAllPosts = async (req, res) => {
       .populate("upVotes")
       .populate("downVotes")
       .exec();
-    res.status(200).json(posts);
+
+    res
+      .status(200)
+      .json({ data: posts, noOfPages: Math.ceil(totalPosts / LIMIT) });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -43,7 +47,11 @@ export const getPost = async (req, res) => {
   const { id } = req.params; //post id
 
   try {
-    const posts = await PostModel.findById(id).populate("comments").exec();
+    const posts = await PostModel.findById(id)
+      .populate("upVotes")
+      .populate("downVotes")
+      .populate("comments")
+      .exec();
     res.status(200).json(posts);
   } catch (error) {
     res.status(404).json({ message: error.message });

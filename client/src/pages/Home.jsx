@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAllPosts } from "../actions/postActions";
 import Post from "../components/Post";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CLEARPOSTS } from "../constants/actionTypes";
 
 import { CircularProgress, Skeleton } from "@mui/material";
@@ -49,13 +49,13 @@ const Home = () => {
   }, [page, noOfPages]);
 
   return (
-    <div className="flex gap-4 justify-center pt-28 pb-40">
-      <div className="flex flex-col grid-cols-3 gap-4">
+    <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
+      <div className="flex flex-col gap-4">
         {posts.map((post) => (
           <Post key={post?._id} post={post} />
         ))}
         {isLoading && (
-          <div className="mx-1 p-2 text-slate-800 bg-gray-50 w-[389px] rounded-xl shadow">
+          <div className="mx-1 p-2 text-slate-800 bg-gray-50 w-[389px] rounded-xl shadow-sm">
             <div role="button">
               <p className="flex justify-end">
                 <Skeleton width={40} style={{ fontSize: "12px" }} />

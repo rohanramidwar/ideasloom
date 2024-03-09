@@ -13,6 +13,10 @@ const commentSchema = mongoose.Schema({
   text: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const CommentModel = mongoose.model("CommentModel", commentSchema);

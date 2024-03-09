@@ -7,10 +7,19 @@ const postSchema = mongoose.Schema({
   content: {
     type: String,
   },
-  likes: [
+  creator: {
+    type: String,
+  },
+  upVotes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "LikeModel",
+      ref: "UpVoteModel",
+    },
+  ],
+  downVotes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "DownVoteModel",
     },
   ],
   comments: [

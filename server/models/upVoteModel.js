@@ -12,5 +12,5 @@ const upVoteSchema = mongoose.Schema({
   },
 });
 
-const UpVoteModel = mongoose.model("UpvoteModel", upVoteSchema);
+const UpVoteModel = mongoose.model("UpVoteModel", upVoteSchema);
 export default UpVoteModel;

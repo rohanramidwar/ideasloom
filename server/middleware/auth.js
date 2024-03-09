@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
     decodedData = jwt.verify(token, "test"); //gives username and id
     //now we know which user has logged in and who is liking the post
     req.userId = decodedData?.id; //users id
+    // console.log(decodedData);
 
     next(); //to pass the actions to second thing
   } catch (error) {
