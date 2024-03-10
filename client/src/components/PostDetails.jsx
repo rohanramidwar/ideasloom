@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import {
-  ArrowBigDown,
-  ArrowBigUp,
-  ChevronLeft,
-  MessageSquare,
-} from "lucide-react";
+import { ArrowBigDown, ArrowBigUp, MessageSquare } from "lucide-react";
 import moment from "moment";
 import toast from "react-hot-toast";
-
-import profilePic from "../assets/profilePic.gif";
 
 import { getPost } from "../actions/postActions";
 import {
@@ -20,6 +13,8 @@ import {
   upVote,
 } from "../actions/voteActions";
 import { addComment } from "../actions/commentActions";
+
+import naruto from "../assets/naruto.svg";
 
 const PostDetails = () => {
   const dispatch = useDispatch();
@@ -45,6 +40,7 @@ const PostDetails = () => {
     text: "",
     user: user?.result?.name, //user name
     id, //post id
+    profilePic: user?.result?.profilePic,
   });
 
   const handleChange = (e) => {
@@ -57,6 +53,12 @@ const PostDetails = () => {
       toast.error("Please sign in first");
     } else {
       dispatch(addComment(commentData));
+      setCommentData({
+        text: "",
+        user: user?.result?.name, //user name
+        id, //post id
+        profilePic: user?.result?.profilePic,
+      });
     }
   };
 
@@ -116,7 +118,7 @@ const PostDetails = () => {
             </p>
             <div className="flex gap-2">
               <img
-                src={profilePic}
+                src={post?.profilePic}
                 alt="profilePic"
                 className="rounded-full w-10 h-10"
               />
@@ -159,6 +161,7 @@ const PostDetails = () => {
                       </button>
                     )}
                   </div>
+
                   <div role="button" className="flex gap-2 items-center">
                     <MessageSquare size={14} />
                     <p>{post?.comments?.length}</p>
@@ -186,7 +189,7 @@ const PostDetails = () => {
                   className="p-2 flex gap-2 hover:bg-gray-100"
                 >
                   <img
-                    src={profilePic}
+                    src={comment?.profilePic}
                     alt="profilePic"
                     className="rounded-full w-5 h-5"
                   />
@@ -202,16 +205,24 @@ const PostDetails = () => {
             onSubmit={submitComment}
             className="px-2 flex pt-2 border-t border-gray-300 gap-2 w-full"
           >
+            <img
+              src={user ? user?.result?.profilePic : naruto}
+              alt="profilePic"
+              width={40}
+              height={40}
+              className="rounded-md"
+            />
             <input
               onChange={handleChange}
               name="text"
               type="text"
+              value={commentData.text}
               placeholder="Add a comment"
-              className="px-1 w-full bg-inherit outline-none border border-gray-300"
+              className="rounded-md px-1 w-full bg-inherit outline-none border border-gray-300"
             />
             <button
               type="submit"
-              className="active:scale-95 hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
+              className="hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
             >
               POST
             </button>

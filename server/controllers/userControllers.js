@@ -19,7 +19,7 @@ export const signin = async (req, res) => {
     );
 
     if (!isPasswordCorrect)
-      return res.status(400).json({ message: "Invalid credential" }); //wrong password
+      return res.status(400).json({ message: "Invalid credentials" }); //wrong password
 
     //correct password
     const token = jwt.sign(
@@ -35,7 +35,7 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, profilePic } = req.body;
 
   try {
     const existingUser = await UserModel.findOne({ email });
@@ -51,6 +51,7 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
       name,
+      profilePic,
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, "test", {

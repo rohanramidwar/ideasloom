@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { ChevronLeft } from "lucide-react";
 
 import { createPost } from "../actions/postActions";
+
+import naruto from "../assets/naruto.svg";
 
 const CreateNewPost = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const CreateNewPost = () => {
     title: "",
     content: "",
     creator: user?.result?.name,
+    profilePic: user?.result?.profilePic,
   });
 
   const handleChange = (e) => {
@@ -31,13 +33,14 @@ const CreateNewPost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!user) {
-      toast.error("Please login first");
+      toast.error("Please sign in first");
     } else {
       dispatch(createPost(postData, navigate));
       setPostData({
         title: "",
         content: "",
         creator: user?.result?.name,
+        profilePic: user?.result?.profilePic,
       });
     }
   };
@@ -52,36 +55,47 @@ const CreateNewPost = () => {
 
   return (
     <div className="flex justify-center pt-20 bg-[#eeebf0] h-screen text-slate-800">
-      <div>
-        <div className="rounded-xl bg-gray-50 p-2 shadow-sm w-[389px] sm:w-[479px]">
-          <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-            <input
-              name="title"
-              type="text"
-              placeholder="Add an intresting title"
-              value={postData.title}
-              onChange={handleChange}
-              className="text-xl font-medium border border-gray-300 px-1 w-full bg-inherit rounded-md outline-none"
-            />
-            <textarea
-              name="content"
-              type="text"
-              placeholder="Go ahead, put anything"
-              value={postData.content}
-              onChange={handleChange}
-              rows={3}
-              maxLength={280}
-              className="text-lg w-full border border-gray-300 px-1 bg-inherit rounded-md outline-none"
-            />
-            <div className="flex justify-end gap-2">
-              <button
-                type="submit"
-                className="text-lg active:scale-95 bg-[#ff574d] text-slate-50 font-medium rounded-md p-2 shadow-sm hover:scale-105"
-              >
-                POST
-              </button>
-            </div>
-          </form>
+      <div className="flex gap-4">
+        <div className="hidden sm:block">
+          <img
+            className="rounded-md shadow-sm"
+            width={80}
+            height={80}
+            src={user ? user?.result?.profilePic : naruto}
+            alt="profilePic"
+          />
+        </div>
+        <div>
+          <div className="rounded-xl bg-gray-50 p-2 shadow-sm w-[389px] sm:w-[479px]">
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+              <input
+                name="title"
+                type="text"
+                placeholder="Add an intresting title"
+                value={postData.title}
+                onChange={handleChange}
+                className="text-xl font-medium border border-gray-300 px-1 w-full bg-inherit rounded-md outline-none"
+              />
+              <textarea
+                name="content"
+                type="text"
+                placeholder="Go ahead, put anything"
+                value={postData.content}
+                onChange={handleChange}
+                rows={3}
+                maxLength={280}
+                className="text-lg w-full border border-gray-300 px-1 bg-inherit rounded-md outline-none"
+              />
+              <div className="flex justify-end gap-2">
+                <button
+                  type="submit"
+                  className="text-lg bg-[#ff574d] text-slate-50 font-medium rounded-md p-2 shadow-sm hover:scale-105"
+                >
+                  POST
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

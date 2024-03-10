@@ -12,8 +12,6 @@ import {
   upVote,
 } from "../actions/voteActions";
 
-import profilePic from "../assets/profilePic.gif";
-
 const Post = ({ post }) => {
   //result and token
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -44,7 +42,7 @@ const Post = ({ post }) => {
 
   const handleUpVote = () => {
     if (!user) {
-      toast.error("Please login first");
+      toast.error("Please sign in first");
     } else {
       dispatch(upVote(post?._id));
       if (isDownVoted) dispatch(removeDownVote(post?._id));
@@ -81,7 +79,7 @@ const Post = ({ post }) => {
         </p>
         <div className="flex items-center gap-2">
           <img
-            src={profilePic}
+            src={post?.profilePic}
             alt="profilePic"
             className="rounded-full w-10 h-10"
           />
@@ -125,6 +123,7 @@ const Post = ({ post }) => {
             </button>
           )}
         </div>
+
         <div
           onClick={openPost}
           role="button"

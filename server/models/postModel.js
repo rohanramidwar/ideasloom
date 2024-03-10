@@ -10,6 +10,9 @@ const postSchema = mongoose.Schema({
   creator: {
     type: String,
   },
+  profilePic: {
+    type: String,
+  },
   upVotes: [
     {
       type: mongoose.Schema.Types.ObjectId,

@@ -3,11 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 
-import profilePic from "../assets/profilePic.gif";
-
-import { LOGOUT } from "../constants/actionTypes";
+import { CLEARPOSTS, LOGOUT } from "../constants/actionTypes";
 import { Plus } from "lucide-react";
 import { Tooltip } from "@mui/material";
+import { getAllPosts } from "../actions/postActions";
 
 const Navbar = () => {
   //result and token
@@ -23,33 +22,42 @@ const Navbar = () => {
 
   const signOut = () => {
     dispatch({ type: LOGOUT });
-    navigate("/");
+    navigate("/auth");
     setUser(null);
+  };
+
+  const titleClicked = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      dispatch({ type: CLEARPOSTS });
+      dispatch(getAllPosts(1));
+    }
   };
 
   return (
     <div className="fixed z-10 w-full flex justify-between items-center h-11 bg-[#ff675e] px-2 sm:px-7">
-      <div>
-        <Link to="/">
-          <p className="font-black text-lg text-slate-50">ideasloom</p>
-        </Link>
+      <div role="button" onClick={titleClicked}>
+        <p className="font-black text-lg text-slate-50">ideasloom</p>
       </div>
       <div className="flex gap-4 items-center">
         <Tooltip title="Create a post">
           <Link to="/create">
             <div role="button" className="text-gray-50 p-2 rounded-md">
-              <Plus />
+              <Plus size={30} />
             </div>
           </Link>
         </Tooltip>
         {user ? (
           <Menu as="div" className="relative flex">
             <Menu.Button>
-              <img
-                src={profilePic}
-                alt="profilePic"
-                className="rounded-xl w-10 h-10"
-              />
+              <Tooltip title="Profile">
+                <img
+                  src={user?.result?.profilePic}
+                  alt="profilePic"
+                  className="rounded-xl w-10 h-10"
+                />
+              </Tooltip>
             </Menu.Button>
             <Menu.Items
               as="div"
@@ -62,7 +70,7 @@ const Navbar = () => {
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
-                    Create a post
+                    <Link to="/create">Create a post</Link>
                   </button>
                 )}
               </Menu.Item>
