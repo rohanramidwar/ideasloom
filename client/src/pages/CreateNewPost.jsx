@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 import { createPost } from "../actions/postActions";
 
-import naruto from "../assets/naruto.svg";
+import dummy from "../assets/dummy.svg";
 
 const CreateNewPost = () => {
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const CreateNewPost = () => {
             className="rounded-md shadow-sm"
             width={80}
             height={80}
-            src={user ? user?.result?.profilePic : naruto}
+            src={user ? user?.result?.profilePic : dummy}
             alt="profilePic"
           />
         </div>
@@ -89,7 +89,7 @@ const CreateNewPost = () => {
               <div className="flex justify-end gap-2">
                 <button
                   type="submit"
-                  className="text-lg bg-[#ff574d] text-slate-50 font-medium rounded-md p-2 shadow-sm hover:scale-105"
+                  className="tracking-wide  text-lg bg-[#ff574d] text-slate-50 font-medium rounded-md p-2 shadow-sm hover:scale-105"
                 >
                   POST
                 </button>

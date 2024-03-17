@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
-
-import { CLEARPOSTS, LOGOUT } from "../constants/actionTypes";
-import { Plus } from "lucide-react";
+import { Edit, LogOut, Plus, Settings } from "lucide-react";
 import { Tooltip } from "@mui/material";
-import { getAllPosts } from "../actions/postActions";
+import toast from "react-hot-toast";
+
+import { LOGOUT } from "../constants/actionTypes";
 
 const Navbar = () => {
   //result and token
@@ -24,27 +24,27 @@ const Navbar = () => {
     dispatch({ type: LOGOUT });
     navigate("/auth");
     setUser(null);
+    toast.success("Logged out successfully");
   };
 
-  const titleClicked = () => {
+  const brandNameClicked = () => {
     if (location.pathname !== "/") {
       navigate("/");
-    } else {
-      dispatch({ type: CLEARPOSTS });
-      dispatch(getAllPosts(1));
     }
   };
 
   return (
     <div className="fixed z-10 w-full flex justify-between items-center h-11 bg-[#ff675e] px-2 sm:px-7">
-      <div role="button" onClick={titleClicked}>
-        <p className="font-black text-lg text-slate-50">ideasloom</p>
+      <div role="button" onClick={brandNameClicked}>
+        <p className="font-black text-lg tracking-wide text-slate-50">
+          ideasloom
+        </p>
       </div>
       <div className="flex gap-4 items-center">
         <Tooltip title="Create a post">
           <Link to="/create">
             <div role="button" className="text-gray-50 p-2 rounded-md">
-              <Plus size={30} />
+              <Edit size={30} />
             </div>
           </Link>
         </Tooltip>
@@ -66,10 +66,11 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`text-sm p-2 text-start ${
+                    className={`text-sm p-2  flex items-center gap-2 text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
+                    <Edit size={16} />
                     <Link to="/create">Create a post</Link>
                   </button>
                 )}
@@ -77,11 +78,12 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`text-sm p-2 text-start ${
+                    className={`text-sm  flex items-center gap-2 p-2 text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
-                    Settings
+                    <Settings size={16} />
+                    <p>Settings</p>
                   </button>
                 )}
               </Menu.Item>
@@ -90,10 +92,11 @@ const Navbar = () => {
                 {({ active }) => (
                   <button
                     onClick={signOut}
-                    className={`text-sm p-2 text-start ${
+                    className={`text-sm flex items-center gap-2 p-2 text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
+                    <LogOut size={16} />
                     Sign out
                   </button>
                 )}

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CircularProgress, Skeleton } from "@mui/material";
-import { ArrowBigDown, ArrowBigUp, MessageSquare } from "lucide-react";
+// import { CircularProgress, Skeleton } from "@mui/material";
+// import { ArrowBigDown, ArrowBigUp, MessageSquare } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 import { getAllPosts } from "../actions/postActions";
 import Post from "../components/Post";
 import { CLEARPOSTS } from "../constants/actionTypes";
 
-import naruto from "../assets/naruto.svg";
+import dummy from "../assets/dummy.svg";
+import PostSkeleton from "../components/skeletons/PostSkeleton";
 
 const Home = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -61,7 +62,7 @@ const Home = () => {
           <Link to="/create">
             <div className="flex gap-2 mx-1 p-2 rounded-xl w-[389px] bg-gray-50">
               <img
-                src={user ? user?.result?.profilePic : naruto}
+                src={user ? user?.result?.profilePic : dummy}
                 alt="profilePic"
                 width={40}
                 height={40}
@@ -74,7 +75,7 @@ const Home = () => {
               />
               <button
                 type="submit"
-                className="hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
+                className="tracking-wide hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
               >
                 POST
               </button>
@@ -84,56 +85,7 @@ const Home = () => {
             {posts.map((post) => (
               <Post key={post?._id} post={post} />
             ))}
-            {isLoading && (
-              <div className="mx-1 p-2 text-slate-800 bg-gray-50 w-[389px] rounded-xl shadow-sm">
-                <div role="button">
-                  <p className="flex justify-end">
-                    <Skeleton width={40} style={{ fontSize: "12px" }} />
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <Skeleton variant="circular" width={40} height={40} />
-                    <p>
-                      <Skeleton variant="text" width={80} />
-                    </p>
-                  </div>
-                  <div className="mt-2">
-                    <Skeleton variant="text" />
-                  </div>
-                  <div className="mt-2">
-                    <Skeleton variant="text" />
-                    <Skeleton variant="text" />
-                  </div>
-                </div>
-                <div className="flex gap-6 text-slate-500 text-xs mt-4">
-                  <div className="p-1 rounded-md  flex gap-2">
-                    <button>
-                      {" "}
-                      <ArrowBigUp size={18} />
-                    </button>
-
-                    <p>
-                      {" "}
-                      <CircularProgress color="inherit" size={14} />
-                    </p>
-
-                    <button>
-                      {" "}
-                      <ArrowBigDown size={18} />
-                    </button>
-                  </div>
-                  <div
-                    role="button"
-                    className="flex gap-2 items-center p-1 rounded-md"
-                  >
-                    <MessageSquare size={14} />
-                    <p>
-                      {" "}
-                      <CircularProgress color="inherit" size={14} />
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
+            {isLoading && <PostSkeleton />}
           </div>
         </div>
         <div>
@@ -145,7 +97,7 @@ const Home = () => {
 
             <div className="flex justify-end">
               <Link to="/create">
-                <button className="hover:scale-105 mt-4 p-2 rounded-md text-lg bg-[#ff574d] text-gray-50 font-medium">
+                <button className="tracking-wide hover:scale-105 mt-4 p-2 rounded-md text-lg bg-[#ff574d] text-gray-50 font-medium">
                   Create a post
                 </button>
               </Link>

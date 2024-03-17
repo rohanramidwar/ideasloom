@@ -14,7 +14,8 @@ import {
 } from "../actions/voteActions";
 import { addComment } from "../actions/commentActions";
 
-import naruto from "../assets/naruto.svg";
+import dummy from "../assets/dummy.svg";
+import PostDetailsSkeleton from "./skeletons/PostDetailsSkeleton";
 
 const PostDetails = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const PostDetails = () => {
 
   const { id } = useParams(); //post id
 
-  const { post } = useSelector((state) => state?.posts);
+  const { post, isLoading } = useSelector((state) => state?.posts);
 
   useEffect(() => {
     dispatch(getPost(id));
@@ -109,8 +110,8 @@ const PostDetails = () => {
 
   return (
     <div className="flex flex-col items-center pt-20 text-slate-800">
-      <div className="flex flex-col">
-        <div className="py-2 bg-gray-50 w-[389px] sm:w-[479px] shadow-sm">
+      {!isLoading ? (
+        <div className="py-2 rounded-xl bg-gray-50 w-[389px] sm:w-[479px] shadow-sm">
           <div className="px-2 border-b border-gray-300 pb-2">
             <p className="text-xs text-end text-slate-500">
               {" "}
@@ -206,7 +207,7 @@ const PostDetails = () => {
             className="px-2 flex pt-2 border-t border-gray-300 gap-2 w-full"
           >
             <img
-              src={user ? user?.result?.profilePic : naruto}
+              src={user ? user?.result?.profilePic : dummy}
               alt="profilePic"
               width={40}
               height={40}
@@ -222,13 +223,15 @@ const PostDetails = () => {
             />
             <button
               type="submit"
-              className="hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
+              className="tracking-wide  hover:scale-105 bg-[#ff574d] text-slate-50 font-medium p-1 rounded-md shadow-sm"
             >
               POST
             </button>
           </form>
         </div>
-      </div>
+      ) : (
+        <PostDetailsSkeleton />
+      )}
     </div>
   );
 };

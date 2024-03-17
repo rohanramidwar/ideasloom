@@ -4,7 +4,7 @@ export const getAllPosts = async (req, res) => {
   const { page } = req.query;
 
   try {
-    const LIMIT = 8;
+    const LIMIT = 5;
     const stIndex = (Number(page) - 1) * LIMIT; //skips earlier fetched posts
     const totalPosts = await PostModel.countDocuments({});
 

@@ -4,29 +4,29 @@ import { useNavigate } from "react-router-dom";
 
 import { signin, signup } from "../actions/authActions";
 
-import boy from "../assets/boy.svg";
-import luffy from "../assets/luffy.svg";
-import naruto from "../assets/naruto.svg";
-import simson from "../assets/simson.svg";
-import girl from "../assets/girl.svg";
-import girl_1 from "../assets/girl_1.svg";
-import girl_2 from "../assets/girl_2.svg";
-import ronaldo from "../assets/ronaldo.svg";
-import jethalal from "../assets/jethalal.svg";
-import viratkohli from "../assets/viratkohli.svg";
+import desire from "../assets/desire.svg";
+import fire from "../assets/fire.svg";
+import flying from "../assets/flying.svg";
+import love from "../assets/love.svg";
+import rain from "../assets/rain.svg";
+import angel from "../assets/angel.svg";
+import soul from "../assets/soul.svg";
+import uncommon from "../assets/uncommon.svg";
+import game from "../assets/game.svg";
+import spidey from "../assets/spidey.svg";
 
 const Auth = () => {
   const profilePics = [
-    boy,
-    girl,
-    girl_1,
-    girl_2,
-    luffy,
-    naruto,
-    simson,
-    ronaldo,
-    jethalal,
-    viratkohli,
+    desire,
+    rain,
+    angel,
+    soul,
+    fire,
+    flying,
+    love,
+    uncommon,
+    game,
+    spidey,
   ];
 
   const dispatch = useDispatch();
@@ -71,9 +71,9 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-[#ff574d] min-h-screen">
+    <div className="pt-14 flex justify-center items-center bg-[#ff574d] min-h-screen">
       <form className="flex flex-col w-72" onSubmit={handleSubmit}>
-        <h1 className="text-2xl font-black text-slate-50 mb-4 text-center">
+        <h1 className="text-2xl tracking-wide font-black text-slate-50 mb-4 text-center">
           {isSignup ? "Sign up" : "Welcome back!"}
         </h1>
         <div className="bg-gray-50 shadow-sm flex flex-col rounded-2xl px-2 py-1">
@@ -111,16 +111,17 @@ const Auth = () => {
           </div>
         </div>
         {isSignup && (
-          <p className="mt-4 text-lg font-medium text-slate-50 text-center">
+          <p className="mt-4 tracking-wide text-lg font-medium text-slate-50 text-center">
             Select avatar
           </p>
         )}
         {isSignup && (
-          <div className="flex flex-wrap justify-center mt-4">
+          <div className="flex flex-wrap bg-gray-50 rounded-xl py-2 justify-center mt-4">
             {profilePics.map((pic, index) => (
               <img
                 key={index}
                 src={pic}
+                loading="lazy"
                 alt={`Avatar ${index}`}
                 className={`w-12 h-12 rounded-full m-1 cursor-pointer ${
                   selectedAvatar === pic ? "border-4 border-red-500" : ""
