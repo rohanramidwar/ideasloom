@@ -1,6 +1,6 @@
 import axios from "axios"; //used to make api calls
 
-const API = axios.create({ baseURL: "https://ideasloom.vercel.app/" }); //points to backend routes
+const API = axios.create({ baseURL: "https://ideasloom.vercel.app" }); //points to backend routes
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
