@@ -18,7 +18,7 @@ app.use(
     credentials: true,
   })
 ); //enables cross origin req
-
+app.use(express.json());
 app.use("/posts", appRoutes); //app routes
 app.use("/user", userRoutes);
 
