@@ -66,11 +66,11 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`text-sm p-2  flex items-center gap-2 text-start ${
+                    className={`text-sm p-2  text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
-                    <Link to="/create">
+                    <Link to="/create flex items-center gap-2">
                       <Edit size={16} />
                       <p>Create a post</p>
                     </Link>
