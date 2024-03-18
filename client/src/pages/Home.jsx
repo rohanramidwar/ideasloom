@@ -59,7 +59,7 @@ const Home = () => {
     <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
       <div className="sm:relative">
         <div className="flex flex-col gap-4">
-          <Link to="/create" className="mx-2 p-2 rounded-xl bg-gray-50">
+          <Link to="/create" className="p-2 rounded-xl bg-gray-50">
             <div className="flex gap-2  sm:w-[389px] ">
               <img
                 src={user ? user?.result?.profilePic : dummy}
