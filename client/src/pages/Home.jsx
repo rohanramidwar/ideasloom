@@ -92,7 +92,6 @@ const Home = () => {
                   <PostSkeleton />
                   <PostSkeleton />
                   <PostSkeleton />
-                  <PostSkeleton />
                 </>
               ) : (
                 <PostSkeleton />
