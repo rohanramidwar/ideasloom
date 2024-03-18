@@ -57,8 +57,8 @@ const Home = () => {
 
   return (
     <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
-      <div className="sm:relative">
-        <div className="flex flex-col gap-4">
+      <div className="w-full sm:auto sm:relative">
+        <div className="w-full sm:auto flex-col gap-4">
           <Link to="/create">
             <div className="flex gap-2 mx-1 p-2 rounded-xl sm:w-[389px] bg-gray-50">
               <img
