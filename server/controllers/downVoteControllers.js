@@ -1,5 +1,5 @@
 import PostModel from "../models/postModel.js";
-import DownVoteModel from "../models/DownVoteModel.js";
+import DownVoteModel from "../models/downVoteModel.js";
 
 export const downVote = async (req, res) => {
   //user not logged in
