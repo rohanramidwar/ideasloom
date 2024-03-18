@@ -72,7 +72,7 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className="mx-2 p-2 text-slate-800 bg-gray-50 sm:w-[389px] rounded-xl shadow-sm ">
+    <div className="mx-1 p-2 text-slate-800 bg-gray-50 w-[389px] rounded-xl shadow-sm ">
       <div role="button" onClick={openPost}>
         <p className="text-xs text-end text-slate-500">
           {moment(post?.createdAt)?.fromNow()}

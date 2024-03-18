@@ -59,8 +59,8 @@ const Home = () => {
     <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
       <div className="sm:relative">
         <div className="flex flex-col gap-4">
-          <Link to="/create" className="p-2 rounded-xl bg-gray-50">
-            <div className="flex gap-2  sm:w-[389px] ">
+          <Link to="/create">
+            <div className="flex gap-2 mx-1 p-2 rounded-xl w-[389px] bg-gray-50">
               <img
                 src={user ? user?.result?.profilePic : dummy}
                 alt="profilePic"
@@ -82,10 +82,10 @@ const Home = () => {
             </div>
           </Link>
           <div className="flex flex-col gap-4">
-            {/* {posts.map((post) => (
+            {posts.map((post) => (
               <Post key={post?._id} post={post} />
-            ))} */}
-            {/* {isLoading &&
+            ))}
+            {isLoading &&
               (page === 1 ? (
                 <>
                   <PostSkeleton />
@@ -93,9 +93,9 @@ const Home = () => {
                   <PostSkeleton />
                   <PostSkeleton />
                 </>
-              ) : ( */}
-            <PostSkeleton />
-            {/* ))} */}
+              ) : (
+                <PostSkeleton />
+              ))}
           </div>
         </div>
         <div>
