@@ -1,5 +1,6 @@
 import axios from "axios"; //used to make api calls
 
+axios.defaults.withCredentials = true;
 const API = axios.create({ baseURL: "https://ideasloom.vercel.app" }); //points to backend routes
 
 API.interceptors.request.use((req) => {

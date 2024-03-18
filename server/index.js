@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use(
   cors({
-    origin: "https://ideasloom-gggl.vercel.app",
+    origin: ["https://ideasloom-gggl.vercel.app"],
     methods: ["POST", "GET", "DELETE"],
     credentials: true,
   })
@@ -37,3 +37,7 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
+
+app.get("/", (req, res) => {
+  res.json("hello");
+});
