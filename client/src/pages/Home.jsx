@@ -82,10 +82,10 @@ const Home = () => {
             </div>
           </Link>
           <div className="flex flex-col gap-4">
-            {posts.map((post) => (
+            {/* {posts.map((post) => (
               <Post key={post?._id} post={post} />
-            ))}
-            {isLoading &&
+            ))} */}
+            {/* {isLoading &&
               (page === 1 ? (
                 <>
                   <PostSkeleton />
@@ -93,9 +93,9 @@ const Home = () => {
                   <PostSkeleton />
                   <PostSkeleton />
                 </>
-              ) : (
-                <PostSkeleton />
-              ))}
+              ) : ( */}
+            <PostSkeleton />
+            {/* ))} */}
           </div>
         </div>
         <div>
