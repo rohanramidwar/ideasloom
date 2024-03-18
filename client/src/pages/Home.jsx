@@ -85,7 +85,18 @@ const Home = () => {
             {posts.map((post) => (
               <Post key={post?._id} post={post} />
             ))}
-            {isLoading && <PostSkeleton />}
+            {isLoading &&
+              (page === 1 ? (
+                <>
+                  <PostSkeleton />
+                  <PostSkeleton />
+                  <PostSkeleton />
+                  <PostSkeleton />
+                  <PostSkeleton />
+                </>
+              ) : (
+                <PostSkeleton />
+              ))}
           </div>
         </div>
         <div>
