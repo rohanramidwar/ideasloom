@@ -4,7 +4,7 @@ import React from "react";
 
 const PostSkeleton = () => {
   return (
-    <div className="mx-2 p-2 w-full text-slate-800 bg-gray-50 sm:w-[389px] rounded-xl shadow-sm">
+    <div className="mx-2 p-2 text-slate-800 bg-gray-50 sm:w-[389px] rounded-xl shadow-sm">
       <div role="button">
         <p className="flex justify-end">
           <Skeleton width={40} style={{ fontSize: "12px" }} />
