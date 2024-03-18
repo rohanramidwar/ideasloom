@@ -55,7 +55,7 @@ const CreateNewPost = () => {
 
   return (
     <div className="flex justify-center pt-20 bg-[#eeebf0] h-screen text-slate-800">
-      <div className="flex gap-4">
+      <div className="flex gap-4 w-full sm:w-auto">
         <div className="hidden sm:block">
           <img
             className="rounded-md shadow-sm"
@@ -65,8 +65,8 @@ const CreateNewPost = () => {
             alt="profilePic"
           />
         </div>
-        <div>
-          <div className="rounded-xl bg-gray-50 p-2 shadow-sm w-[389px] sm:w-[479px]">
+        <div className="w-full sm:w-auto">
+          <div className="mx-1 rounded-xl bg-gray-50 p-2 shadow-sm sm:w-[479px]">
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <input
                 name="title"
