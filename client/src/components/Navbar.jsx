@@ -70,7 +70,7 @@ const Navbar = () => {
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
-                    <Link to="/create flex items-center gap-2">
+                    <Link to="/create" className="flex items-center gap-2">
                       <Edit size={16} />
                       <p>Create a post</p>
                     </Link>
