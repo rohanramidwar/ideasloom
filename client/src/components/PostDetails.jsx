@@ -223,6 +223,7 @@ const PostDetails = () => {
               onChange={handleChange}
               name="text"
               type="text"
+              required
               value={commentData.text}
               placeholder="Add a comment"
               className="rounded-md px-1 w-full bg-inherit outline-none border border-gray-300"

@@ -83,6 +83,7 @@ const CreateNewPost = () => {
                 value={postData.content}
                 onChange={handleChange}
                 rows={3}
+                required
                 maxLength={280}
                 className="text-lg w-full border border-gray-300 px-1 bg-inherit rounded-md outline-none"
               />
