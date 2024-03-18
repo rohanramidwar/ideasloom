@@ -111,7 +111,7 @@ const PostDetails = () => {
   return (
     <div className="flex flex-col items-center pt-20 text-slate-800">
       {!isLoading ? (
-        <div className="py-2 mx-2 rounded-xl bg-gray-50 w-full sm:w-[479px] shadow-sm">
+        <div className="py-2 rounded-xl bg-gray-50 w-full sm:w-[479px] shadow-sm">
           <div className="px-2 border-b border-gray-300 pb-2">
             <p className="text-xs text-end text-slate-500">
               {" "}

@@ -5,7 +5,7 @@ import dummy from "../../assets/dummy.svg";
 
 const PostDetailsSkeleton = () => {
   return (
-    <div className="py-2 rounded-xl bg-gray-50 sm:w-[479px] shadow-sm">
+    <div className="py-2 rounded-xl bg-gray-50 w-full sm:w-[479px] shadow-sm">
       <div className="px-2 border-b border-gray-300 pb-2">
         <p className="flex justify-end">
           <Skeleton width={40} style={{ fontSize: "12px" }} />
