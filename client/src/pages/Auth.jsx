@@ -47,7 +47,9 @@ const Auth = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const updatedValue = name === "name" ? value.trim() : value;
+    setFormData({ ...formData, [name]: updatedValue });
   };
 
   const handleAvatarSelect = (avatar) => {
