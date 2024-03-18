@@ -174,7 +174,13 @@ const PostDetails = () => {
 
           <div className="pt-2  overflow-auto max-h-60">
             <div className="px-2 flex gap-2">
-              <p className="px-2 pb-1 text-sm font-bold bg-emerald-500 rounded-2xl text-slate-50">
+              <p
+                className={`px-2 pb-1 text-sm font-bold ${
+                  post?.upVotes?.length - post?.downVotes?.length < 0
+                    ? "bg-red-500"
+                    : "bg-emerald-500"
+                } } rounded-2xl text-slate-50`}
+              >
                 <span>{post?.upVotes?.length - post?.downVotes?.length}</span>{" "}
                 Votes
               </p>

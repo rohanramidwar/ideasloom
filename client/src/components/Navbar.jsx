@@ -70,8 +70,10 @@ const Navbar = () => {
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
-                    <Edit size={16} />
-                    <Link to="/create">Create a post</Link>
+                    <Link to="/create">
+                      <Edit size={16} />
+                      <p>Create a post</p>
+                    </Link>
                   </button>
                 )}
               </Menu.Item>

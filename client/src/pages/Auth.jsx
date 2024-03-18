@@ -82,6 +82,7 @@ const Auth = () => {
               <input
                 name="name"
                 type="text"
+                maxLength={20}
                 placeholder="Nickname"
                 onChange={handleChange}
                 className="bg-inherit text-lg px-2 outline-none"
