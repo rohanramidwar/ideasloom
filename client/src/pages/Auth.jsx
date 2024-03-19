@@ -73,7 +73,7 @@ const Auth = () => {
   return (
     <div className="pt-14 flex justify-center items-center bg-[#ff574d] min-h-screen">
       <form
-        className="flex flex-col mx-1 w-full sm:w-72"
+        className="flex flex-col mx-2 w-full sm:w-72"
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl tracking-wide font-black text-slate-50 mb-4 text-center">
@@ -120,7 +120,7 @@ const Auth = () => {
           </p>
         )}
         {isSignup && (
-          <div className="flex flex-wrap gap-1 bg-gray-50 rounded-xl py-2 justify-center mt-4">
+          <div className="flex flex-wrap sm:gap-0 gap-[5px] bg-gray-50 rounded-xl py-2 justify-center mt-4">
             {profilePics.map((pic, index) => (
               <img
                 key={index}

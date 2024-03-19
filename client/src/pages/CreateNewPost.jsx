@@ -66,7 +66,7 @@ const CreateNewPost = () => {
           />
         </div>
         <div className="w-full sm:w-auto">
-          <div className="mx-1 rounded-xl bg-gray-50 p-2 shadow-sm sm:w-[479px]">
+          <div className="mx-2 rounded-xl bg-gray-50 p-2 shadow-sm sm:w-[479px]">
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               <input
                 name="title"

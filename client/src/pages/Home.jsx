@@ -60,7 +60,7 @@ const Home = () => {
       <div className="w-full sm:w-auto sm:relative">
         <div className="w-full flex sm:w-auto flex-col gap-4">
           <Link to="/create">
-            <div className="flex gap-2 mx-1 p-2 rounded-xl sm:w-[389px] bg-gray-50">
+            <div className="flex gap-2 mx-2 p-2 rounded-xl sm:w-[389px] bg-gray-50">
               <img
                 src={user ? user?.result?.profilePic : dummy}
                 alt="profilePic"
