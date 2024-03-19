@@ -58,6 +58,22 @@ const PostDetailsSkeleton = () => {
           </div>
         </div>
       </div>
+      <div className="pt-2  overflow-auto max-h-60">
+        <div className="px-2 flex gap-2">
+          <p className="px-2 pb-1 text-sm font-bold bg-emerald-500 rounded-2xl text-slate-50">
+            <span>
+              <CircularProgress color="inherit" size={14} />
+            </span>{" "}
+            Votes
+          </p>
+          <p className="px-2 pb-1 text-sm font-bold bg-sky-500 rounded-2xl text-slate-50">
+            <span>
+              <CircularProgress color="inherit" size={14} />
+            </span>{" "}
+            Comments
+          </p>
+        </div>
+      </div>
       <form className="px-2 flex pt-2 border-t border-gray-300 gap-2 w-full">
         <img
           src={dummy}
