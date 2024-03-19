@@ -72,7 +72,10 @@ const Auth = () => {
 
   return (
     <div className="pt-14 flex justify-center items-center bg-[#ff574d] min-h-screen">
-      <form className="flex flex-col w-72" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col mx-1 w-full sm:w-72"
+        onSubmit={handleSubmit}
+      >
         <h1 className="text-2xl tracking-wide font-black text-slate-50 mb-4 text-center">
           {isSignup ? "Sign up" : "Welcome back!"}
         </h1>
@@ -117,14 +120,14 @@ const Auth = () => {
           </p>
         )}
         {isSignup && (
-          <div className="flex flex-wrap bg-gray-50 rounded-xl py-2 justify-center mt-4">
+          <div className="flex flex-wrap gap-1 bg-gray-50 rounded-xl py-2 justify-center mt-4">
             {profilePics.map((pic, index) => (
               <img
                 key={index}
                 src={pic}
                 loading="lazy"
                 alt={`Avatar ${index}`}
-                className={`w-12 h-12 rounded-full m-1 cursor-pointer ${
+                className={`sm:w-12 sm:h-12 w-[16%] h-[16%] rounded-full m-1 cursor-pointer ${
                   selectedAvatar === pic ? "border-4 border-red-500" : ""
                 }`}
                 onClick={() => handleAvatarSelect(pic)}
