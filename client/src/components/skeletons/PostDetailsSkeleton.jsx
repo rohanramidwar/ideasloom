@@ -58,7 +58,7 @@ const PostDetailsSkeleton = () => {
           </div>
         </div>
       </div>
-      <div className="pt-2  overflow-auto max-h-60">
+      <div className="py-2 overflow-auto max-h-60">
         <div className="px-2 flex gap-2">
           <p className="px-2 pb-1 text-sm font-bold bg-emerald-500 rounded-2xl text-slate-50">
             <span>
