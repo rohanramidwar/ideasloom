@@ -56,7 +56,7 @@ const Home = () => {
   }, [page, noOfPages]);
 
   return (
-    <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
+    <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-20">
       <div className="w-full sm:w-auto sm:relative">
         <div className="w-full flex sm:w-auto flex-col gap-4">
           <Link to="/create">
@@ -100,7 +100,7 @@ const Home = () => {
         </div>
         <div>
           <div className="hidden absolute left-[405px] top-0 p-2 sm:flex flex-col w-80 rounded-xl bg-gray-50 shadow-sm">
-            <p className="break-all">
+            <p className="break-all text-justify text-lg">
               We are place for individuals to share and explore ideas together
               and join in meaningful discussions. Have something to share?
             </p>

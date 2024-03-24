@@ -86,7 +86,7 @@ const Post = ({ post }) => {
           <p className="font-medium ">{post?.creator}</p>
         </div>
         <p className="text-lg font-medium mt-2">{post?.title}</p>
-        <p className=" mt-2 break-all">{post?.content}</p>
+        <p className=" mt-2 break-all text-justify">{post?.content}</p>
       </div>
       <div className="flex gap-6 text-slate-500 text-xs mt-4">
         <div className="p-1 rounded-md flex gap-2">
