@@ -100,7 +100,7 @@ const Home = () => {
         </div>
         <div>
           <div className="hidden absolute left-[405px] top-0 p-2 sm:flex flex-col w-80 rounded-xl bg-gray-50 shadow-sm">
-            <p className="break-all text-justify text-lg">
+            <p className="text-justify break-all text-lg">
               We are place for individuals to share and explore ideas together
               and join in meaningful discussions. Have something to share?
             </p>
