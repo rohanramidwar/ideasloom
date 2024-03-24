@@ -126,7 +126,7 @@ const PostDetails = () => {
               <div>
                 <p className="font-medium">{post?.creator}</p>
                 <p className="text-lg font-medium mt-2">{post?.title}</p>
-                <p className="mt-2 break-all text-justify">{post?.content}</p>
+                <p className="mt-2 text-justify">{post?.content}</p>
                 <div className="flex gap-6 text-slate-500 text-xs mt-4">
                   <div className="flex gap-2">
                     {isUpVoted ? (
