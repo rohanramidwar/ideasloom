@@ -66,7 +66,7 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`text-sm p-2  text-start ${
+                    className={`p-2  text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
@@ -80,7 +80,7 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`text-sm  flex items-center gap-2 p-2 text-start ${
+                    className={`flex items-center gap-2 p-2 text-start ${
                       active && "bg-gray-200 rounded-md"
                     }`}
                   >
