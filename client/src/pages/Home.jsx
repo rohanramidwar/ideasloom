@@ -56,7 +56,7 @@ const Home = () => {
   }, [page, noOfPages]);
 
   return (
-    <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-30">
+    <div className="text-slate-800 flex gap-4 justify-center pt-20 pb-40">
       <div className="w-full sm:w-auto sm:relative">
         <div className="w-full flex sm:w-auto flex-col gap-4">
           <Link to="/create">
