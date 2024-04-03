@@ -37,7 +37,7 @@ const Navbar = () => {
     <div className="fixed z-10 w-full flex justify-between items-center h-11 bg-[#ff675e] px-2 sm:px-7">
       <div role="button" onClick={brandNameClicked}>
         <p className="font-black text-lg tracking-wide text-slate-50">
-          OpenMindSpace
+          ideasloom
         </p>
       </div>
       <div className="flex gap-4 items-center">
