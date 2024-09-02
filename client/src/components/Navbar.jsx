@@ -24,7 +24,6 @@ const Navbar = () => {
     dispatch({ type: LOGOUT });
     navigate("/auth");
     setUser(null);
-    toast.success("Logged out successfully");
   };
 
   const brandNameClicked = () => {
