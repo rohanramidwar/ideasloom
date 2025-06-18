@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
-import { Edit, LogOut, Plus, Settings } from "lucide-react";
+import { Edit, Lightbulb, LogOut, Plus, Settings } from "lucide-react";
 import { Tooltip } from "@mui/material";
 import toast from "react-hot-toast";
 
@@ -34,7 +34,8 @@ const Navbar = () => {
 
   return (
     <div className="fixed z-10 w-full flex justify-between items-center h-11 bg-[#ff675e] px-2 sm:px-7">
-      <div role="button" onClick={brandNameClicked}>
+      <div className="flex gap-2" role="button" onClick={brandNameClicked}>
+        <Lightbulb color="white" />
         <p className="font-black text-lg tracking-wide text-slate-50">
           ideasloom
         </p>
